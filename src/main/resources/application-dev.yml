@@ -17,3 +17,8 @@ keycloak:
   realm: minio
   resource: minio-client
   public-client: true
+  security-constraints[0]:
+    authRoles[0]: minio-role1
+    securityCollections[0]:
+      patterns[0]: /phones*
+

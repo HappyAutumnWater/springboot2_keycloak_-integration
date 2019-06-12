@@ -26,7 +26,7 @@
     <button onclick="output(keycloak.createLoginUrl())">Show Login URL</button>
     <button onclick="output(keycloak.createLogoutUrl())">Show Logout URL</button>
     <button onclick="output(keycloak.createRegisterUrl())">Show Register URL</button>
-    <button onclick="postPhones()">postPhones2</button>
+    <button onclick="postPhones()">postPhones</button>
 </div>
 
 <h2>Result</h2>
@@ -148,6 +148,8 @@
                     output(msg);
                 } else if (req.status == 403) {
                     output("403");
+                }else if (req.status == 401) {
+                    output("401");
                 }
             }
         }
