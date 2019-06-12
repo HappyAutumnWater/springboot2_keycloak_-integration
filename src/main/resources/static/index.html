@@ -26,8 +26,7 @@
     <button onclick="output(keycloak.createLoginUrl())">Show Login URL</button>
     <button onclick="output(keycloak.createLogoutUrl())">Show Logout URL</button>
     <button onclick="output(keycloak.createRegisterUrl())">Show Register URL</button>
-    <button onclick="postPhones()">postPhones</button>
-    <button onclick="postPhones2()">postPhones2</button>
+    <button onclick="postPhones()">postPhones2</button>
 </div>
 
 <h2>Result</h2>
@@ -135,7 +134,7 @@
     });
 
 
-    var postPhones2 = function () {
+    var postPhones = function () {
         var url = 'http://localhost:8888/phones';
 
         var req = new XMLHttpRequest();
