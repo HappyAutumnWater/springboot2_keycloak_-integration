@@ -1,0 +1,9 @@
+{
+  "realm": "minio",
+  "auth-server-url": "http://10.222.38.12/auth",
+  "ssl-required": "external",
+  "resource": "minio-client",
+  "public-client": true,
+  "use-resource-role-mappings": true,
+  "confidential-port": 0
+}
