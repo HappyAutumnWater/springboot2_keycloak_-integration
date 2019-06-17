@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 8088
 
 spring:
   datasource:
@@ -17,8 +17,10 @@ keycloak:
   realm: minio
   resource: minio-client
   public-client: true
+  cors: true
+  bearer-only: true
   security-constraints[0]:
     authRoles[0]: minio-role1
     securityCollections[0]:
       patterns[0]: /phones*
-
+  connection-pool-size: 20
