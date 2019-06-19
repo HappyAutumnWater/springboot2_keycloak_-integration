@@ -30,37 +30,39 @@
 </div>
 
 <h2>Result</h2>
-<pre style="background-color: #ddd; border: 1px solid #ccc; padding: 10px; word-wrap: break-word; white-space: pre-wrap;" id="output"></pre>
+<pre style="background-color: #ddd; border: 1px solid #ccc; padding: 10px; word-wrap: break-word; white-space: pre-wrap;"
+     id="output"></pre>
 
 <h2>Events</h2>
-<pre style="background-color: #ddd; border: 1px solid #ccc; padding: 10px; word-wrap: break-word; white-space: pre-wrap;" id="events"></pre>
+<pre style="background-color: #ddd; border: 1px solid #ccc; padding: 10px; word-wrap: break-word; white-space: pre-wrap;"
+     id="events"></pre>
 
 
 <script>
     function loadProfile() {
-        keycloak.loadUserProfile().success(function(profile) {
+        keycloak.loadUserProfile().success(function (profile) {
             output(profile);
-        }).error(function() {
+        }).error(function () {
             output('Failed to load profile');
         });
     }
 
     function loadUserInfo() {
-        keycloak.loadUserInfo().success(function(userInfo) {
+        keycloak.loadUserInfo().success(function (userInfo) {
             output(userInfo);
-        }).error(function() {
+        }).error(function () {
             output('Failed to load user info');
         });
     }
 
     function refreshToken(minValidity) {
-        keycloak.updateToken(minValidity).success(function(refreshed) {
+        keycloak.updateToken(minValidity).success(function (refreshed) {
             if (refreshed) {
                 output(keycloak.tokenParsed);
             } else {
                 output('Token not refreshed, valid for ' + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
             }
-        }).error(function() {
+        }).error(function () {
             output('Failed to refresh token');
         });
     }
@@ -102,7 +104,7 @@
     };
 
     keycloak.onAuthError = function (errorData) {
-        event("Auth Error: " + JSON.stringify(errorData) );
+        event("Auth Error: " + JSON.stringify(errorData));
     };
 
     keycloak.onAuthRefreshSuccess = function () {
@@ -127,9 +129,9 @@
         flow: 'standard'
     };
 
-    keycloak.init(initOptions).success(function(authenticated) {
+    keycloak.init(initOptions).success(function (authenticated) {
         output('Init Success (' + (authenticated ? 'Authenticated' : 'Not Authenticated') + ')');
-    }).error(function() {
+    }).error(function () {
         output('Init Error');
     });
 
@@ -146,20 +148,17 @@
                 if (req.status == 200) {
                     var msg = req.response;
                     output(msg);
-                } else if (req.status == 403) {
-                    output("403");
-                }else if (req.status == 401) {
-                    output("401");
+                } else {
+                    output(req.status);
                 }
             }
         }
 
         req.send();
     };
-    
+
 
 </script>
-
 
 
 </body>
