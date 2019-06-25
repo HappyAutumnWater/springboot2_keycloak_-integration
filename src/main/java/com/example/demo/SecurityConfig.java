@@ -50,7 +50,7 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
         http.authorizeRequests()
-//                .antMatchers("/phone*").hasRole("minio-role1")
+                .antMatchers("/phone*").hasRole("minio-role1")
                 .anyRequest().permitAll().and().csrf().disable().httpBasic().disable();
     }
 }
